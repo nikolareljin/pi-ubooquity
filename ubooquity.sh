@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# --------------------------------------------------
+
+PORT="8082"
+FOLDER="/opt/ubooquity"
+PI_USER="pi" # or root
+
+# --------------------------------------------------
+
 ### BEGIN INIT INFO
 # Provides:          Ubooquity
 # Required-Start:    $local_fs $remote_fs $network
@@ -18,14 +26,14 @@
 
 export UBOOQUITY_HOME=/opt/ubooquity
 DAEMON_NAME="Ubooquity"
-DAEMON_USER=root
+DAEMON_USER=${PI_USER}
 DAEMON_PATH="/usr/bin/java"
-DAEMON_OPTS="-jar /opt/ubooquity/Ubooquity.jar -webadmin -headless -port 2022"
-DAEMON_PWD="/opt/ubooquity"
+DAEMON_OPTS="-jar ${FOLDER}/Ubooquity.jar --remoteadmin --headless --adminport ${PORT} --workdir ${FOLDER}/data"
+DAEMON_PWD="${FOLDER}"
 DAEMON_DESC=$(get_lsb_header_val $0 "Short-Description")
 DAEMON_PID="/var/run/${DAEMON_NAME}.pid"
 DAEMON_NICE=0
-DAEMON_LOG='/var/log/cherrymusic'
+DAEMON_LOG='/var/log/ubooquity.log'
 
 [ -r "/etc/default/${DAEMON_NAME}" ] && . "/etc/default/${DAEMON_NAME}"
 
