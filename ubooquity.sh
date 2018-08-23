@@ -2,7 +2,7 @@
 
 # --------------------------------------------------
 
-PORT="8082"
+PORT="2023"
 FOLDER="/opt/ubooquity"
 PI_USER="pi" # or root
 

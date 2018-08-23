@@ -5,7 +5,7 @@
 # ----------------------------------
 
 ROOT_DIR=$PWD
-PORT="8082"
+PORT="2023"
 FOLDER="/opt/ubooquity"
 DAEMON_LOG='/var/log/ubooquity.log'
 
